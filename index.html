@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>David & Anna — Wedding Invitation | iStudio</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Pinyon Script, Great Vibes, Cormorant Garamond, Cinzel, Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Great+Vibes&family=Pinyon+Script&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <!-- Tone.js for subtle ambient chime/piano audio on play button click -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: {
+              50: '#FDFBF7',
+              100: '#F7EFE4',
+              200: '#F3E8D8',
+              300: '#EADBC5',
+            },
+            gold: {
+              300: '#D5C2A5',
+              400: '#C2AA87',
+              500: '#B59B76',
+              600: '#9A7F59',
+              700: '#7D6545',
+              800: '#5E4B32',
+            }
+          },
+          fontFamily: {
+            script: ['"Pinyon Script"', '"Great Vibes"', 'cursive'],
+            scriptAlt: ['"Great Vibes"', 'cursive'],
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            display: ['"Cinzel"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg-ivory: #F6EFE5;
+      --bg-ivory-deep: #EFE5D6;
+      --text-gold-dark: #786246;
+      --text-gold-mid: #9C8464;
+      --text-gold-light: #B8A284;
+      --accent-tan: #BCA382;
+    }
+
+    body {
+      background-color: var(--bg-ivory);
+      color: var(--text-gold-dark);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Subtle paper grain & warm ambient glow */
+    .ambient-page {
+      background: 
+        radial-gradient(ellipse at 50% 18%, rgba(255, 252, 247, 0.85) 0%, rgba(246, 239, 229, 0) 65%),
+        radial-gradient(ellipse at 50% 55%, rgba(255, 251, 245, 0.65) 0%, rgba(246, 239, 229, 0) 70%),
+        linear-gradient(180deg, #F8F2E9 0%, #F5EDE1 35%, #F6EFE5 70%, #F4ECE0 100%);
+    }
+
+    /* Sunlit Classical Wall Hero Background */
+    .classical-wall {
+      background: linear-gradient(180deg, #EFE2D0 0%, #F5EBE0 65%, #F7F0E6 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Diagonal warm window sunbeams & dapple shadows */
+    .sunlight-beams {
+      background: 
+        linear-gradient(125deg, 
+          rgba(210, 185, 152, 0.35) 0%, 
+          rgba(210, 185, 152, 0.08) 16%, 
+          rgba(255, 250, 242, 0.65) 18%, 
+          rgba(255, 250, 242, 0.55) 26%, 
+          rgba(208, 182, 148, 0.28) 28%, 
+          rgba(255, 250, 242, 0.6) 38%,
+          rgba(255, 250, 242, 0.15) 52%,
+          rgba(204, 178, 144, 0.25) 68%,
+          rgba(255, 250, 242, 0.55) 75%,
+          rgba(204, 178, 144, 0.32) 92%
+        );
+      mix-blend-mode: multiply;
+      pointer-events: none;
+    }
+
+    /* Architectural Wainscoting & Fluted Pilasters */
+    .pilaster-flutes {
+      background: repeating-linear-gradient(
+        90deg,
+        rgba(255, 252, 248, 0.7) 0px,
+        rgba(255, 252, 248, 0.7) 5px,
+        rgba(212, 190, 162, 0.38) 6px,
+        rgba(195, 170, 138, 0.45) 10px,
+        rgba(245, 235, 222, 0.6) 14px
+      );
+    }
+
+    /* Central Recessed Classical Arch */
+    .hero-arch-outer {
+      border-radius: 9999px 9999px 0 0;
+      background: linear-gradient(180deg, #E8D7C1 0%, #F3E8D9 40%, #F7EFE4 100%);
+      box-shadow: 
+        0 -8px 30px rgba(168, 138, 100, 0.22),
+        inset 0 6px 18px rgba(255, 255, 255, 0.85),
+        inset 0 -10px 25px rgba(186, 156, 118, 0.18);
+      border: 1px solid rgba(212, 190, 160, 0.65);
+    }
+
+    .hero-arch-inner {
+      border-radius: 9999px 9999px 0 0;
+      background: radial-gradient(circle at 55% 32%, #FCF8F2 0%, #F3E6D4 58%, #E7D5BE 100%);
+      box-shadow: 
+        inset 0 14px 32px rgba(158, 126, 88, 0.28),
+        inset 8px 0 20px rgba(168, 138, 100, 0.16),
+        inset -8px 0 20px rgba(255, 252, 246, 0.8);
+      border: 2px solid rgba(235, 220, 198, 0.9);
+    }
+
+    /* Soft Watercolor Vignette Mask for Venue Image */
+    .watercolor-mask {
+      -webkit-mask-image: radial-gradient(ellipse 92% 86% at 50% 50%, #000 58%, rgba(0,0,0,0.6) 78%, transparent 100%);
+      mask-image: radial-gradient(ellipse 92% 86% at 50% 50%, #000 58%, rgba(0,0,0,0.6) 78%, transparent 100%);
+    }
+
+    /* Custom Form Input Styling matching screenshot */
+    .wedding-input {
+      background: #FAF6F0;
+      border: 1px solid rgba(216, 199, 176, 0.45);
+      box-shadow: 
+        0 4px 14px rgba(180, 154, 120, 0.08),
+        inset 0 1px 2px rgba(255, 255, 255, 0.9);
+      transition: all 0.25s ease;
+    }
+    .wedding-input:focus {
+      outline: none;
+      border-color: #B89F7D;
+      background: #FFFFFF;
+      box-shadow: 0 6px 20px rgba(180, 154, 120, 0.16);
+    }
+
+    /* Custom Radio Button */
+    .wedding-radio {
+      appearance: none;
+      width: 12px;
+      height: 12px;
+      border: 1px solid #B59B76;
+      border-radius: 50%;
+      display: inline-grid;
+      place-content: center;
+      background-color: #FAF6F0;
+      cursor: pointer;
+    }
+    .wedding-radio::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      transform: scale(0);
+      transition: 120ms transform ease-in-out;
+      background-color: #9A7F59;
+    }
+    .wedding-radio:checked::before {
+      transform: scale(1);
+    }
+
+    /* Primary Button ("CONFIRM ATTENDANCE") */
+    .btn-confirm {
+      background: linear-gradient(180deg, #C4AC8C 0%, #B39874 100%);
+      color: #FDFBF7;
+      box-shadow: 
+        0 8px 20px -4px rgba(154, 127, 89, 0.45),
+        inset 0 1px 1px rgba(255, 255, 255, 0.35);
+      transition: all 0.3s ease;
+    }
+    .btn-confirm:hover {
+      background: linear-gradient(180deg, #B89F7D 0%, #A38763 100%);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px -4px rgba(154, 127, 89, 0.55);
+    }
+
+    /* Pill Location Button */
+    .btn-location {
+      background: linear-gradient(180deg, #FBF8F3 0%, #F2EAE0 100%);
+      border: 1px solid rgba(194, 170, 135, 0.45);
+      box-shadow: 0 4px 12px rgba(168, 140, 102, 0.12);
+      transition: all 0.25s ease;
+    }
+    .btn-location:hover {
+      background: #FFFFFF;
+      border-color: rgba(181, 155, 118, 0.75);
+      transform: translateY(-1px);
+    }
+
+    /* Subtle floating animation for dappled light */
+    @keyframes gentleBreeze {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-6px, 4px) scale(1.02); }
+    }
+    .dapple-anim {
+      animation: gentleBreeze 11s ease-in-out infinite;
+    }
+  </style>
+</head>
+
+<body class="ambient-page min-h-screen selection:bg-gold-300 selection:text-gold-800">
+
+  <!-- =====================================================================
+       TOP FLOATING CONTROLS (Audio Play Button & Language Pill)
+       ===================================================================== -->
+  <header class="fixed top-0 left-0 right-0 z-50 pointer-events-none px-4 sm:px-7 py-3.5 flex items-center justify-between max-w-[1440px] mx-auto">
+    <!-- Top Left: Audio Play/Pause Pill Button -->
+    <button 
+      id="audioToggleBtn"
+      onclick="toggleAmbientMusic()"
+      aria-label="Toggle wedding background music"
+      class="pointer-events-auto w-9 h-6 rounded-full bg-[#B5A99B]/80 hover:bg-[#9C8E7E] backdrop-blur-sm flex items-center justify-center text-white shadow-sm transition-all duration-300 group"
+      title="Play Ambient Music"
+    >
+      <svg id="playIcon" class="w-2.5 h-2.5 fill-current ml-0.5" viewBox="0 0 16 16">
+        <path d="M4 2.5v11l9-5.5-9-5.5z"/>
+      </svg>
+      <svg id="pauseIcon" class="w-2.5 h-2.5 fill-current hidden" viewBox="0 0 16 16">
+        <path d="M3.5 2.5h3v11h-3v-11zm6 0h3v11h-3v-11z"/>
+      </svg>
+    </button>
+
+    <!-- Top Right: Language Switcher Pill -->
+    <button 
+      id="langToggleBtn"
+      onclick="cycleLanguage()"
+      class="pointer-events-auto h-6 px-2.5 rounded-full bg-[#FAF6F0]/90 hover:bg-white border border-gold-300/60 backdrop-blur-sm flex items-center gap-1.5 text-[10px] tracking-wider font-sans text-gold-700 shadow-sm transition-all"
+      title="Switch Language"
+    >
+      <span class="text-[9px] leading-none opacity-80" id="langFlag">🇬🇧</span>
+      <span class="font-medium uppercase" id="langCode">EN</span>
+    </button>
+  </header>
+
+
+  <!-- =====================================================================
+       1. HERO SECTION: FULL-BLEED BACKGROUND VIDEO & HERO TEXT OVERLAY
+       ===================================================================== -->
+  <section id="heroSection" class="relative min-h-[580px] sm:min-h-[680px] md:min-h-[760px] flex flex-col justify-between pt-4 sm:pt-8 pb-0 select-none overflow-hidden bg-[#EFE2D0]">
+    
+    <!-- Full-Bleed Hero Background Video (assets/vedio_home) -->
+    <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+      <video 
+        id="heroBgVideo"
+        autoplay 
+        loop 
+        muted 
+        playsinline
+        poster="assets/hero_bg.jpg"
+        class="w-full h-full object-cover object-center"
+      >
+        <source src="assets/vedio_home.mp4" type="video/mp4" />
+        <source src="assets/vedio_home.webm" type="video/webm" />
+        <source src="assets/vedio_home" type="video/mp4" />
+      </video>
+    </div>
+
+    <!-- HERO TEXT OVERLAY (Kept in the exact upper-arch position) -->
+    <div class="relative z-20 max-w-md mx-auto px-4 pt-12 sm:pt-16 flex flex-col items-center text-center">
+      
+      <!-- "WE'RE GETTING MARRIED" -->
+      <p class="font-display text-[8px] sm:text-[9px] tracking-[0.28em] text-gold-600 uppercase leading-relaxed mb-1.5" data-i18n="gettingMarried">
+        WE'RE GETTING<br/>MARRIED
+      </p>
+
+      <!-- "David & Anna" -->
+      <h1 class="font-script text-[40px] sm:text-[48px] text-[#9A7B56] leading-none tracking-wide my-1 drop-shadow-[0_1px_2px_rgba(255,255,255,0.85)]">
+        David <span class="text-[32px] sm:text-[38px] mx-0.5">&amp;</span> Anna
+      </h1>
+
+      <!-- Ornate Filigree Flourish under Names -->
+      <div class="my-2 text-[#B59A76]">
+        <svg class="w-36 sm:w-44 h-4" viewBox="0 0 200 24" fill="none">
+          <path d="M10,12 L72,12" stroke="currentColor" stroke-width="0.75" stroke-opacity="0.6"/>
+          <path d="M128,12 L190,12" stroke="currentColor" stroke-width="0.75" stroke-opacity="0.6"/>
+          <path d="M72,12 C80,6 88,6 94,12 C88,18 80,18 72,12 Z" stroke="currentColor" stroke-width="0.9" fill="currentColor" fill-opacity="0.2"/>
+          <path d="M128,12 C120,6 112,6 106,12 C112,18 120,18 128,12 Z" stroke="currentColor" stroke-width="0.9" fill="currentColor" fill-opacity="0.2"/>
+          <path d="M100,5 L104,12 L100,19 L96,12 Z" fill="currentColor"/>
+          <circle cx="66" cy="12" r="1.5" fill="currentColor"/>
+          <circle cx="134" cy="12" r="1.5" fill="currentColor"/>
+        </svg>
+      </div>
+
+      <!-- Date Row: JULY | 24 | 2027 -->
+      <div class="flex items-center justify-center gap-4 sm:gap-5 text-gold-700 mt-0.5 mb-2">
+        <span class="font-display text-[8px] sm:text-[9px] tracking-[0.25em] uppercase text-gold-600" data-i18n="month">JULY</span>
+        <span class="font-serif text-xl sm:text-2xl font-medium tracking-wider text-[#8C6D46] leading-none">24</span>
+        <span class="font-display text-[8px] sm:text-[9px] tracking-[0.22em] uppercase text-gold-600">2027</span>
+      </div>
+
+    </div>
+
+    <!-- ===================================================================
+         FLOWING SILK / SATIN WAVES AT BASE OF HERO (Seamless Transition)
+         =================================================================== -->
+    <div class="relative z-10 mt-auto w-full overflow-hidden pointer-events-none">
+      <svg class="w-full h-28 sm:h-36 md:h-44 block" viewBox="0 0 1440 220" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="silkHero1" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#FDFBF7" stop-opacity="0.95"/>
+            <stop offset="45%" stop-color="#F3E8D9" stop-opacity="0.98"/>
+            <stop offset="100%" stop-color="#F7F0E6" stop-opacity="1"/>
+          </linearGradient>
+          <linearGradient id="silkFoldShadow" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#DFCGB3" stop-opacity="0.35"/>
+            <stop offset="25%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+            <stop offset="50%" stop-color="#E5D5C0" stop-opacity="0.45"/>
+            <stop offset="75%" stop-color="#FFFFFF" stop-opacity="0.85"/>
+            <stop offset="100%" stop-color="#DFCGB3" stop-opacity="0.35"/>
+          </linearGradient>
+        </defs>
+        <!-- Back Soft Satin Wave -->
+        <path d="M0,45 Q240,10 480,52 T960,42 T1440,50 L1440,220 L0,220 Z" fill="#EFE3D2" opacity="0.7"/>
+        <!-- Middle Billowing Silk Wave -->
+        <path d="M0,68 C220,25 390,95 660,65 C930,35 1150,92 1440,55 L1440,220 L0,220 Z" fill="url(#silkHero1)"/>
+        <!-- Foreground Crisp Silk Crease Highlights -->
+        <path d="M0,95 C180,62 340,118 580,88 C820,58 1090,115 1440,80 L1440,220 L0,220 Z" fill="url(#silkFoldShadow)"/>
+        <!-- Bottom Blend into Page Background (#F6EFE5) -->
+        <path d="M0,135 Q360,105 720,132 T1440,125 L1440,220 L0,220 Z" fill="#F6EFE5"/>
+      </svg>
+    </div>
+  </section>
+
+
+  <!-- =====================================================================
+       2. INVITATION MESSAGE SECTION ("With love, we invite you")
+       ===================================================================== -->
+  <section class="relative z-20 max-w-xl mx-auto px-6 pt-8 sm:pt-12 pb-10 text-center">
+    
+    <!-- Script Heading -->
+    <h2 class="font-script text-3xl sm:text-4xl text-[#9C8262] tracking-wide mb-2" data-i18n="inviteTitle">
+      With love, we invite you
+    </h2>
+
+    <!-- Thin Diamond Ornament Line -->
+    <div class="flex items-center justify-center gap-2 my-3 text-[#C2AA87]">
+      <span class="w-14 sm:w-16 h-[0.5px] bg-gradient-to-r from-transparent to-[#B89F7D]"></span>
+      <span class="w-1.5 h-1.5 rotate-45 bg-[#B89F7D]"></span>
+      <span class="w-14 sm:w-16 h-[0.5px] bg-gradient-to-l from-transparent to-[#B89F7D]"></span>
+    </div>
+
+    <!-- Poetic 4-line Invitation Text -->
+    <div class="font-serif text-[13px] sm:text-[15px] text-[#8A7356] leading-[1.9] tracking-[0.03em] mt-4 space-y-0.5" data-i18n="inviteBody">
+      <p>to be a part of our special day</p>
+      <p>as we begin a new chapter together.</p>
+      <p>Your presence will make our celebration</p>
+      <p>truly meaningful.</p>
+    </div>
+
+    <!-- Ornate Vintage Filigree Divider below text -->
+    <div class="mt-10 sm:mt-12 flex justify-center text-[#B9A07E]">
+      <svg class="w-40 sm:w-48 h-5" viewBox="0 0 240 28" fill="none">
+        <path d="M12,18 L88,18" stroke="currentColor" stroke-width="0.7" stroke-opacity="0.55"/>
+        <path d="M152,18 L228,18" stroke="currentColor" stroke-width="0.7" stroke-opacity="0.55"/>
+        <path d="M90,18 C96,10 106,10 112,18 C106,22 98,22 90,18 Z" stroke="currentColor" stroke-width="0.85"/>
+        <path d="M150,18 C144,10 134,10 128,18 C134,22 142,22 150,18 Z" stroke="currentColor" stroke-width="0.85"/>
+        <path d="M120,6 L124,15 L120,22 L116,15 Z" fill="currentColor"/>
+        <circle cx="108" cy="11" r="1.2" fill="currentColor"/>
+        <circle cx="132" cy="11" r="1.2" fill="currentColor"/>
+        <circle cx="84" cy="18" r="1.2" fill="currentColor"/>
+        <circle cx="156" cy="18" r="1.2" fill="currentColor"/>
+      </svg>
+    </div>
+  </section>
+
+
+  <!-- =====================================================================
+       3. COUNTDOWN SECTION ("The countdown has begun")
+       ===================================================================== -->
+  <section class="relative z-20 max-w-lg mx-auto px-6 py-8 sm:py-10 text-center">
+    
+    <!-- Script Heading -->
+    <h2 class="font-script text-3xl sm:text-4xl text-[#9C8262] tracking-wide mb-2" data-i18n="countdownTitle">
+      The countdown has begun
+    </h2>
+
+    <!-- Thin Diamond Ornament Line -->
+    <div class="flex items-center justify-center gap-2 my-3 text-[#C2AA87]">
+      <span class="w-14 sm:w-16 h-[0.5px] bg-gradient-to-r from-transparent to-[#B89F7D]"></span>
+      <span class="w-1.5 h-1.5 rotate-45 bg-[#B89F7D]"></span>
+      <span class="w-14 sm:w-16 h-[0.5px] bg-gradient-to-l from-transparent to-[#B89F7D]"></span>
+    </div>
+
+    <!-- 4-Column Countdown Grid (Matching Screenshot's Delicate Left-to-Right Fade) -->
+    <div class="grid grid-cols-4 gap-3 sm:gap-6 max-w-xs sm:max-w-sm mx-auto mt-6 items-baseline">
+      <!-- Days -->
+      <div class="flex flex-col items-center">
+        <span id="cd-days" class="font-serif text-2xl sm:text-3xl text-[#8A7050] font-normal tracking-wider">273</span>
+        <span class="font-display text-[7px] sm:text-[8px] tracking-[0.24em] uppercase text-[#A89173] mt-1" data-i18n="days">DAYS</span>
+      </div>
+      <!-- Hours -->
+      <div class="flex flex-col items-center opacity-75">
+        <span id="cd-hours" class="font-serif text-2xl sm:text-3xl text-[#9E8668] font-normal tracking-wider">01</span>
+        <span class="font-display text-[7px] sm:text-[8px] tracking-[0.24em] uppercase text-[#B59F82] mt-1" data-i18n="hours">HOURS</span>
+      </div>
+      <!-- Minutes -->
+      <div class="flex flex-col items-center opacity-45">
+        <span id="cd-mins" class="font-serif text-2xl sm:text-3xl text-[#B09A7E] font-normal tracking-wider">42</span>
+        <span class="font-display text-[7px] sm:text-[8px] tracking-[0.24em] uppercase text-[#C2AE95] mt-1" data-i18n="minutes">MINUTES</span>
+      </div>
+      <!-- Seconds -->
+      <div class="flex flex-col items-center opacity-30">
+        <span id="cd-secs" class="font-serif text-2xl sm:text-3xl text-[#BEA98E] font-normal tracking-wider">18</span>
+        <span class="font-display text-[7px] sm:text-[8px] tracking-[0.24em] uppercase text-[#CBB8A0] mt-1" data-i18n="seconds">SECONDS</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =====================================================================
+       4. THE SCHEDULE SECTION (With Sweeping Silk Ribbon Background)
+       ===================================================================== -->
+  <section class="relative py-12 sm:py-16 overflow-hidden">
+    
+    <!-- Translucent Flowing Silk Ribbon Background Wave (Matching middle of screenshot) -->
+    <div class="absolute inset-0 pointer-events-none flex items-center justify-center">
+      <svg class="w-full h-64 sm:h-80 opacity-85" viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="midSilkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#FDFBF8" stop-opacity="0.65"/>
+            <stop offset="50%" stop-color="#EFE4D4" stop-opacity="0.75"/>
+            <stop offset="100%" stop-color="#FDFBF8" stop-opacity="0.7"/>
+          </linearGradient>
+        </defs>
+        <path d="M-40,35 C320,15 520,175 880,165 C1150,158 1320,95 1480,82 L1480,255 C1240,285 960,315 620,255 C320,202 120,115 -40,125 Z" fill="url(#midSilkGrad)"/>
+        <path d="M-40,55 C310,38 560,198 920,180 C1180,168 1340,115 1480,98" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-opacity="0.8"/>
+        <path d="M-40,95 C300,85 590,235 960,210 C1210,192 1350,145 1480,128" fill="none" stroke="#E4D4BE" stroke-width="1.5" stroke-opacity="0.55"/>
+      </svg>
+    </div>
+
+    <div class="relative z-10 max-w-md mx-auto px-6 text-center">
+      <!-- Script Heading -->
+      <h2 class="font-script text-3xl sm:text-4xl text-[#9C8262] tracking-wide mb-2" data-i18n="scheduleTitle">
+        The Schedule
+      </h2>
+
+      <!-- Thin Diamond Ornament Line -->
+      <div class="flex items-center justify-center gap-2 my-3 text-[#C2AA87]">
+        <span class="w-14 sm:w-16 h-[0.5px] bg-gradient-to-r from-transparent to-[#B89F7D]"></span>
+        <span class="w-1.5 h-1.5 rotate-45 bg-[#B89F7D]"></span>
+        <span class="w-14 sm:w-16 h-[0.5px] bg-gradient-to-l from-transparent to-[#B89F7D]"></span>
+      </div>
+
+      <!-- Vertical Timeline Container -->
+      <div class="relative mt-8 sm:mt-10 max-w-[280px] sm:max-w-[310px] mx-auto">
+        
+        <!-- Subtle Center Vertical Line -->
+        <div class="absolute left-[42%] top-4 bottom-6 w-[0.5px] bg-gradient-to-b from-[#C8B192]/70 via-[#C8B192]/50 to-transparent"></div>
+
+        <!-- Schedule Item 1: Wedding Ceremony -->
+        <div class="relative flex items-center mb-10">
+          <!-- Left: Wedding Rings Icon -->
+          <div class="w-[42%] pr-6 flex justify-end text-[#B09674]">
+            <svg class="w-8 h-8 stroke-current" viewBox="0 0 36 36" fill="none" stroke-width="1.1">
+              <!-- Diamond on top of left ring -->
+              <path d="M12,10 L14.5,7.5 L17,10 L14.5,13 Z" stroke-linejoin="round"/>
+              <!-- Two Interlocking Rings -->
+              <circle cx="14.5" cy="20" r="6.5"/>
+              <circle cx="21.5" cy="20" r="6.5"/>
+            </svg>
+          </div>
+
+          <!-- Center Diamond Node -->
+          <div class="relative z-10 -ml-[3px] w-1.5 h-1.5 rotate-45 bg-[#B59B76]"></div>
+
+          <!-- Right: Event Details -->
+          <div class="w-[58%] pl-6 text-left">
+            <h3 class="font-script text-2xl sm:text-[26px] text-[#9C8262] leading-tight" data-i18n="ceremony">
+              Wedding<br/>Ceremony
+            </h3>
+            <p class="font-serif text-xs sm:text-[13px] tracking-[0.12em] text-[#7D6545] mt-1 font-medium">
+              4:00 PM
+            </p>
+          </div>
+        </div>
+
+        <!-- Schedule Item 2: Reception -->
+        <div class="relative flex items-center">
+          <!-- Left: Plate, Fork & Knife Icon -->
+          <div class="w-[42%] pr-6 flex justify-end text-[#BCA485]">
+            <svg class="w-8 h-8 stroke-current" viewBox="0 0 36 36" fill="none" stroke-width="1.1">
+              <!-- Plate -->
+              <circle cx="18" cy="19" r="6.5"/>
+              <circle cx="18" cy="19" r="4.2" stroke-opacity="0.6"/>
+              <!-- Fork (Left) -->
+              <path d="M8.5,12 L8.5,26 M7,12 L7,16.5 C7,17.5 10,17.5 10,16.5 L10,12" stroke-linecap="round"/>
+              <!-- Knife (Right) -->
+              <path d="M27.5,12 L27.5,26 M27.5,12 C29.5,13.5 29.5,18 27.5,19" stroke-linecap="round"/>
+            </svg>
+          </div>
+
+          <!-- Center Diamond Node -->
+          <div class="relative z-10 -ml-[3px] w-1.5 h-1.5 rotate-45 bg-[#C5AE8E]"></div>
+
+          <!-- Right: Event Details -->
+          <div class="w-[58%] pl-6 text-left opacity-80">
+            <h3 class="font-script text-2xl sm:text-[26px] text-[#A88F70] leading-tight" data-i18n="reception">
+              Reception
+            </h3>
+            <p class="font-serif text-xs sm:text-[13px] tracking-[0.12em] text-[#9A8264] mt-1">
+              6:00 PM
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =====================================================================
+       5. LOCATIONS SECTION (Watercolor Estate Illustration + Ca Na Xica)
+       ===================================================================== -->
+  <section class="relative z-20 max-w-lg mx-auto px-6 py-10 sm:py-12 text-center">
+    
+    <!-- Script Heading -->
+    <h2 class="font-script text-3xl sm:text-4xl text-[#9C8262] tracking-wide mb-2" data-i18n="locationsTitle">
+      Locations
+    </h2>
+
+    <!-- Thin Diamond Ornament Line -->
+    <div class="flex items-center justify-center gap-2 my-3 text-[#C2AA87]">
+      <span class="w-14 sm:w-16 h-[0.5px] bg-gradient-to-r from-transparent to-[#B89F7D]"></span>
+      <span class="w-1.5 h-1.5 rotate-45 bg-[#B89F7D]"></span>
+      <span class="w-14 sm:w-16 h-[0.5px] bg-gradient-to-l from-transparent to-[#B89F7D]"></span>
+    </div>
+
+    <!-- Watercolor Architectural Illustration of Mediterranean Villa, Cypress Trees & Reflecting Pool -->
+    <div class="mt-6 mb-5 flex justify-center">
+      <div class="w-56 sm:w-64 h-28 sm:h-32 watercolor-mask relative overflow-hidden">
+        <svg class="w-full h-full" viewBox="0 0 320 160">
+          <defs>
+            <linearGradient id="poolWater" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#B9D3D0"/>
+              <stop offset="50%" stop-color="#9AC0BE"/>
+              <stop offset="100%" stop-color="#D4E3DF"/>
+            </linearGradient>
+            <linearGradient id="skyWash" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#EFE6D8" stop-opacity="0.4"/>
+              <stop offset="100%" stop-color="#F7EFE4" stop-opacity="0.9"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Soft Watercolor Sky & Garden Wash -->
+          <rect width="320" height="160" fill="url(#skyWash)"/>
+          <ellipse cx="160" cy="70" rx="145" ry="55" fill="#E6DEC8" opacity="0.45"/>
+
+          <!-- Distant Mediterranean Villa (Whitewashed Ibiza Estate with Arches) -->
+          <rect x="115" y="42" width="90" height="32" fill="#FBF7F0" stroke="#C5B49B" stroke-width="0.8"/>
+          <polygon points="112,42 160,28 208,42" fill="#D5A98A" opacity="0.75"/>
+          <!-- Villa Dark Terracotta Windows & Arched Doors -->
+          <rect x="128" y="47" width="8" height="10" fill="#7C6855" opacity="0.75"/>
+          <rect x="156" y="46" width="8" height="11" fill="#7C6855" opacity="0.75"/>
+          <rect x="184" y="47" width="8" height="10" fill="#7C6855" opacity="0.75"/>
+          <path d="M142,74 L142,63 C142,60 148,60 148,63 L148,74 Z" fill="#6D5A49" opacity="0.8"/>
+          <path d="M157,74 L157,61 C157,58 163,58 163,61 L163,74 Z" fill="#5A493B" opacity="0.85"/>
+          <path d="M172,74 L172,63 C172,60 178,60 178,63 L178,74 Z" fill="#6D5A49" opacity="0.8"/>
+
+          <!-- Left Row of Mediterranean Cypress & Olive Trees (Watercolor Sage/Olive Greens) -->
+          <g fill="#7A8B69" opacity="0.85">
+            <ellipse cx="38" cy="52" rx="16" ry="38" fill="#8D9E7B"/>
+            <ellipse cx="58" cy="56" rx="13" ry="34" fill="#6F805E"/>
+            <ellipse cx="78" cy="60" rx="11" ry="28" fill="#849671"/>
+            <ellipse cx="96" cy="62" rx="9" ry="24" fill="#728362"/>
+            <ellipse cx="110" cy="64" rx="7" ry="18" fill="#8C9C7A"/>
+          </g>
+          <!-- Tree Trunks & Terracotta Pots Left -->
+          <g fill="#9C7A5B">
+            <rect x="55" y="86" width="6" height="8" rx="1"/>
+            <rect x="75" y="84" width="5" height="6" rx="1"/>
+            <rect x="94" y="82" width="4" height="5" rx="1"/>
+          </g>
+
+          <!-- Right Row of Mediterranean Cypress & Olive Trees -->
+          <g fill="#7A8B69" opacity="0.85">
+            <ellipse cx="282" cy="52" rx="16" ry="38" fill="#8D9E7B"/>
+            <ellipse cx="262" cy="56" rx="13" ry="34" fill="#6F805E"/>
+            <ellipse cx="242" cy="60" rx="11" ry="28" fill="#849671"/>
+            <ellipse cx="224" cy="62" rx="9" ry="24" fill="#728362"/>
+            <ellipse cx="210" cy="64" rx="7" ry="18" fill="#8C9C7A"/>
+          </g>
+          <!-- Tree Trunks & Terracotta Pots Right -->
+          <g fill="#9C7A5B">
+            <rect x="259" y="86" width="6" height="8" rx="1"/>
+            <rect x="239" y="84" width="5" height="6" rx="1"/>
+            <rect x="221" y="82" width="4" height="5" rx="1"/>
+          </g>
+
+          <!-- Warm Limestone Pool Promenade Deck -->
+          <polygon points="122,74 198,74 295,148 25,148" fill="#EAE0D0"/>
+          <!-- Central Perspective Reflecting Pool -->
+          <polygon points="142,74 178,74 238,148 82,148" fill="url(#poolWater)" stroke="#FDFBF7" stroke-width="2"/>
+
+          <!-- Water Reflections in Pool -->
+          <line x1="135" y1="92" x2="185" y2="92" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.6"/>
+          <line x1="120" y1="108" x2="200" y2="108" stroke="#FFFFFF" stroke-width="1.2" stroke-opacity="0.5"/>
+          <line x1="105" y1="126" x2="215" y2="126" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.65"/>
+          <!-- Sunlit Shrubs in Foreground Corners -->
+          <circle cx="48" cy="112" r="18" fill="#9AA984" opacity="0.6"/>
+          <circle cx="272" cy="112" r="18" fill="#9AA984" opacity="0.6"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Small Uppercase Label -->
+    <p class="font-display text-[7px] sm:text-[8px] tracking-[0.28em] uppercase text-[#B59F82] mb-1" data-i18n="locationLabel">
+      LOCATION
+    </p>
+
+    <!-- Venue Name in Script: "Ca Na Xica" -->
+    <h3 class="font-script text-2xl sm:text-3xl text-[#8E7454] mb-2">
+      Ca Na Xica
+    </h3>
+
+    <!-- Venue Address in Tracked Small Caps -->
+    <p class="font-display text-[7.5px] sm:text-[8.5px] tracking-[0.18em] uppercase text-[#9A8366] leading-relaxed max-w-xs mx-auto mb-5">
+      CARRETERA DE SANT MIQUEL, KM 10.2,<br/>
+      SANT MIQUEL DE BALANSAT, IBIZA, SPAIN
+    </p>
+
+    <!-- "VIEW LOCATION" Pill Button -->
+    <button 
+      onclick="openLocationModal()"
+      class="btn-location inline-flex items-center justify-center gap-1.5 px-6 py-2 rounded-full text-[8px] sm:text-[9px] font-display tracking-[0.22em] uppercase text-[#8A7152]"
+    >
+      <svg class="w-2.5 h-2.5 text-[#9C8262] fill-current" viewBox="0 0 16 16">
+        <path d="M8 1a5 5 0 0 0-5 5c0 3.75 5 9 5 9s5-5.25 5-9a5 5 0 0 0-5-5zm0 6.75a1.75 1.75 0 1 1 0-3.5 1.75 1.75 0 0 1 0 3.5z"/>
+      </svg>
+      <span data-i18n="viewLocation">VIEW LOCATION</span>
+    </button>
+  </section>
+
+
+  <!-- =====================================================================
+       6. R.S.V.P. FORM SECTION
+       ===================================================================== -->
+  <section class="relative z-20 max-w-md mx-auto px-6 pt-10 sm:pt-14 pb-12 text-center">
+    
+    <!-- Tracked Uppercase Heading: R S V P -->
+    <h2 class="font-display text-[11px] sm:text-xs tracking-[0.45em] uppercase text-[#9C8262] mb-2">
+      R S V P
+    </h2>
+
+    <!-- Thin Diamond Ornament Line -->
+    <div class="flex items-center justify-center gap-2 my-2.5 text-[#C2AA87]">
+      <span class="w-12 sm:w-14 h-[0.5px] bg-gradient-to-r from-transparent to-[#B89F7D]"></span>
+      <span class="w-1.5 h-1.5 rotate-45 bg-[#B89F7D]"></span>
+      <span class="w-12 sm:w-14 h-[0.5px] bg-gradient-to-l from-transparent to-[#B89F7D]"></span>
+    </div>
+
+    <!-- Subtitle: Kindly reply by June 1, 2027 -->
+    <p class="font-serif italic text-xs sm:text-[13px] text-[#9A8366] mt-2 mb-7" data-i18n="rsvpDeadline">
+      Kindly reply by June 1, 2027
+    </p>
+
+    <!-- RSVP Form -->
+    <form id="rsvpForm" onsubmit="handleRsvpSubmit(event)" class="max-w-[320px] sm:max-w-[340px] mx-auto space-y-4 text-left">
+      
+      <!-- Field 1: Your Name -->
+      <div>
+        <label for="guestName" class="block font-serif text-[11px] text-[#9A8366] pl-3 mb-1" data-i18n="yourName">
+          Your Name
+        </label>
+        <input 
+          id="guestName"
+          type="text" 
+          required
+          placeholder=""
+          class="wedding-input w-full h-9 sm:h-10 px-4 rounded-full text-xs sm:text-sm text-[#6E583D] font-serif"
+        />
+      </div>
+
+      <!-- Field 2: Number of guests -->
+      <div>
+        <label for="guestCount" class="block font-serif text-[11px] text-[#9A8366] pl-3 mb-1" data-i18n="numGuests">
+          Number of guests
+        </label>
+        <input 
+          id="guestCount"
+          type="number" 
+          min="1" 
+          max="10"
+          required
+          placeholder=""
+          class="wedding-input w-full h-9 sm:h-10 px-4 rounded-full text-xs sm:text-sm text-[#6E583D] font-serif"
+        />
+      </div>
+
+      <!-- Attendance Radio Options -->
+      <div class="pt-2 pb-3 flex items-center justify-center gap-6 text-[10px] sm:text-[11px] font-serif text-[#8E7658]">
+        <label class="inline-flex items-center gap-1.5 cursor-pointer select-none">
+          <input type="radio" name="attendance" value="yes" checked class="wedding-radio" />
+          <span data-i18n="attendYes">Yes, I'll be there</span>
+        </label>
+        <label class="inline-flex items-center gap-1.5 cursor-pointer select-none">
+          <input type="radio" name="attendance" value="no" class="wedding-radio" />
+          <span data-i18n="attendNo">Sorry, I can't make it</span>
+        </label>
+      </div>
+
+      <!-- Submit Button: CONFIRM ATTENDANCE -->
+      <div class="text-center pt-1">
+        <button 
+          type="submit"
+          class="btn-confirm w-56 sm:w-60 h-9 sm:h-10 rounded-full font-display text-[8px] sm:text-[9px] tracking-[0.24em] uppercase"
+          data-i18n="confirmBtn"
+        >
+          CONFIRM ATTENDANCE
+        </button>
+      </div>
+    </form>
+
+    <!-- RSVP Confirmation Message Box (Hidden by default) -->
+    <div id="rsvpSuccessBox" class="hidden mt-5 p-4 rounded-2xl bg-[#FAF6F0] border border-gold-300/60 shadow-sm text-center">
+      <p class="font-script text-2xl text-[#8E7454] mb-1">Thank you!</p>
+      <p id="rsvpSuccessText" class="font-serif text-xs text-[#7D6545]"></p>
+    </div>
+
+    <!-- Sign-off ("With love,") -->
+    <div class="mt-14 sm:mt-16 text-center">
+      <p class="font-serif italic text-xs sm:text-[13px] text-[#A89173] tracking-wider" data-i18n="withLove">
+        With love,
+      </p>
+    </div>
+  </section>
+
+
+  <!-- =====================================================================
+       7. BOTTOM BILLOWING SILK DRAPERY & iSTUDIO FOOTER
+       ===================================================================== -->
+  <footer class="relative pt-2">
+    
+    <!-- Lush Multi-Fold Ivory Satin Drapery Divider (Matching bottom of screenshot) -->
+    <div class="relative w-full overflow-hidden pointer-events-none select-none">
+      <svg class="w-full h-28 sm:h-36 md:h-44 block" viewBox="0 0 1440 240" preserveAspectRatio="none">
+        <defs>
+          <!-- Deep Satin Fold Gradient -->
+          <linearGradient id="btmSilkMain" x1="0%" y1="0%" x2="100%" y2="20%">
+            <stop offset="0%" stop-color="#E5D6C3"/>
+            <stop offset="18%" stop-color="#FFFDF9"/>
+            <stop offset="34%" stop-color="#DFCGB8"/>
+            <stop offset="52%" stop-color="#FAF4EB"/>
+            <stop offset="72%" stop-color="#DCCAB2"/>
+            <stop offset="88%" stop-color="#FFFDF9"/>
+            <stop offset="100%" stop-color="#E2D2BE"/>
+          </linearGradient>
+          <linearGradient id="btmSilkHighlight" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/>
+            <stop offset="55%" stop-color="#F1E5D5" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#DECBB4" stop-opacity="0.95"/>
+          </linearGradient>
+          <linearGradient id="btmSilkShadow" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#C9B296" stop-opacity="0.45"/>
+            <stop offset="100%" stop-color="#EADCCB" stop-opacity="0.8"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Upper Draped Corner Sweeps (Left and Right Swoops) -->
+        <path d="M0,15 C180,55 340,125 560,148 C820,175 1140,105 1440,8 L1440,240 L0,240 Z" fill="url(#btmSilkShadow)"/>
+        
+        <!-- Billowing Satin Fold 1 -->
+        <path d="M0,45 C140,20 260,115 450,138 C680,165 890,95 1120,118 C1260,132 1360,65 1440,35 L1440,240 L0,240 Z" fill="url(#btmSilkMain)"/>
+
+        <!-- Crisp Luminous Silk Fold Crest Left-to-Center -->
+        <path d="M-20,95 C110,55 210,165 360,195 C490,220 620,145 780,175 C960,210 1150,115 1460,145 L1460,240 L-20,240 Z" fill="url(#btmSilkHighlight)"/>
+
+        <!-- Deep Sculpted Satin Crease Shadows -->
+        <path d="M40,90 C150,125 220,215 340,235 C240,225 140,165 40,90 Z" fill="#CBB497" opacity="0.55"/>
+        <path d="M180,75 C270,115 360,205 490,232 C390,200 290,135 180,75 Z" fill="#FFFFFF" opacity="0.8"/>
+        <path d="M1440,68 C1310,95 1210,185 1040,215 C1190,210 1330,155 1440,68 Z" fill="#CBB497" opacity="0.5"/>
+        <path d="M980,155 C1120,135 1260,175 1440,155 L1440,225 C1260,205 1120,185 980,155 Z" fill="#FFFFFF" opacity="0.75"/>
+
+        <!-- Straight Footer Baseline Cut -->
+        <rect x="0" y="226" width="1440" height="16" fill="#F4ECE0"/>
+      </svg>
+    </div>
+
+    <!-- Footer Branding Bar (iStudio) -->
+    <div class="bg-[#F4ECE0] pt-5 pb-10 text-center">
+      <p class="font-serif text-base sm:text-lg tracking-[0.08em] text-[#7D6545] font-medium">
+        iStudio
+      </p>
+      <p class="font-display text-[7px] sm:text-[8px] tracking-[0.28em] uppercase text-[#A89173] mt-0.5 mb-3">
+        www.istudio.com
+      </p>
+
+      <!-- Bottom Social Icons -->
+      <div class="flex items-center justify-center gap-2.5 text-[#9C8262]">
+        <!-- Instagram Icon -->
+        <a href="#rsvpForm" aria-label="Instagram" class="w-5 h-5 rounded-full border border-[#B89F7D]/60 flex items-center justify-center hover:bg-[#B89F7D] hover:text-white transition-colors">
+          <svg class="w-2.5 h-2.5 fill-current" viewBox="0 0 16 16">
+            <path d="M8 1.44c2.136 0 2.389.008 3.233.047.78.036 1.203.166 1.485.276.374.145.64.318.92.598.28.28.453.546.598.92.11.282.24.705.276 1.485.039.844.047 1.097.047 3.233s-.008 2.389-.047 3.233c-.036.78-.166 1.203-.276 1.485a2.47 2.47 0 0 1-.598.92c-.28.28-.546.453-.92.598-.282.11-.705.24-1.485.276-.844.039-1.097.047-3.233.047s-2.389-.008-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.598-.92c-.11-.282-.24-.705-.276-1.485-.039-.844-.047-1.097-.047-3.233s.008-2.389.047-3.233c.036-.78.166-1.203.276-1.485.145-.374.318-.64.598-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.844-.039 1.097-.047 3.233-.047zm0-1.44C5.827 0 5.555.01 4.702.048 3.85.087 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm0 3.892a4.108 4.108 0 1 0 0 8.216 4.108 4.108 0 0 0 0-8.216zm0 6.775a2.667 2.667 0 1 1 0-5.334 2.667 2.667 0 0 1 0 5.334zm5.23-6.937a.96.96 0 1 1-1.92 0 .96.96 0 0 1 1.92 0z"/>
+          </svg>
+        </a>
+        <!-- Website / Globe Icon -->
+        <a href="#rsvpForm" aria-label="Website" class="w-5 h-5 rounded-full border border-[#B89F7D]/60 flex items-center justify-center hover:bg-[#B89F7D] hover:text-white transition-colors">
+          <svg class="w-2.5 h-2.5 fill-current" viewBox="0 0 16 16">
+            <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm5.9 7H11.4c-.1-1.9-.6-3.7-1.4-5.1 1.9.6 3.4 2.1 3.9 5.1zM8 14.5c-.9 0-2.1-1.8-2.3-5.5h4.6c-.2 3.7-1.4 5.5-2.3 5.5zM5.7 7C5.9 3.3 7.1 1.5 8 1.5s2.1 1.8 2.3 5.5H5.7zM6 1.9C5.2 3.3 4.7 5.1 4.6 7H2.1c.5-3 2-4.5 3.9-5.1zM2.1 9h2.5c.1 1.9.6 3.7 1.4 5.1-1.9-.6-3.4-2.1-3.9-5.1zm7.9 5.1c.8-1.4 1.3-3.2 1.4-5.1h2.5c-.5 3-2 4.5-3.9 5.1z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- =====================================================================
+       LOCATION MODAL (Ca Na Xica, Ibiza Interactive Map & Directions)
+       ===================================================================== -->
+  <div id="locationModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/40 backdrop-blur-xs p-4">
+    <div class="bg-[#FAF6F0] border border-gold-300 rounded-3xl max-w-md w-full p-6 text-center shadow-2xl relative animate-fadeIn">
+      <button 
+        onclick="closeLocationModal()" 
+        class="absolute top-4 right-4 w-7 h-7 rounded-full bg-[#EFE5D6] text-gold-700 flex items-center justify-center hover:bg-gold-300 transition-colors"
+        aria-label="Close modal"
+      >
+        ✕
+      </button>
+      <p class="font-display text-[8px] tracking-[0.28em] uppercase text-gold-600 mb-1">WEDDING VENUE</p>
+      <h3 class="font-script text-3xl text-[#8E7454] mb-1">Ca Na Xica</h3>
+      <p class="font-display text-[8.5px] tracking-[0.16em] uppercase text-[#9A8366] mb-4">
+        Carretera de Sant Miquel, km 10.2, 07815 Ibiza, Spain
+      </p>
+      <div class="rounded-2xl overflow-hidden border border-gold-300/60 h-48 bg-[#EFE5D6] mb-4 relative flex items-center justify-center">
+        <iframe 
+          title="Ca Na Xica Ibiza Map"
+          class="w-full h-full border-0 filter sepia-[0.25] contrast-[0.95]"
+          loading="lazy"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=1.415%2C39.025%2C1.455%2C39.055&amp;layer=mapnik&amp;marker=39.0404%2C1.4347">
+        </iframe>
+      </div>
+      <div class="flex items-center justify-center gap-3">
+        <a 
+          href="https://www.google.com/maps/search/?api=1&query=Ca+Na+Xica+Ibiza+Spain" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="btn-confirm px-6 py-2.5 rounded-full font-display text-[8.5px] tracking-[0.22em] uppercase inline-block"
+        >
+          OPEN IN GOOGLE MAPS
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- =====================================================================
+       JAVASCRIPT: LIVE COUNTDOWN, AMBIENT AUDIO SYNTH, RSVP & I18N
+       ===================================================================== -->
+  <script>
+    // 1. Countdown Timer Logic (Defaults to 273 Days, 01 Hours as shown in screenshot, and ticks live)
+    let remainingSeconds = (273 * 86400) + (1 * 3600) + (42 * 60) + 18;
+
+    function updateCountdown() {
+      if (remainingSeconds > 0) remainingSeconds--;
+      const d = Math.floor(remainingSeconds / 86400);
+      const h = Math.floor((remainingSeconds % 86400) / 3600);
+      const m = Math.floor((remainingSeconds % 3600) / 60);
+      const s = remainingSeconds % 60;
+
+      document.getElementById('cd-days').textContent = String(d);
+      document.getElementById('cd-hours').textContent = String(h).padStart(2, '0');
+      document.getElementById('cd-mins').textContent = String(m).padStart(2, '0');
+      document.getElementById('cd-secs').textContent = String(s).padStart(2, '0');
+    }
+    setInterval(updateCountdown, 1000);
+
+    // 2. Gentle Romantic Music Box / Piano Arpeggio using Tone.js
+    let isPlaying = false;
+    let musicLoop = null;
+    let synth = null;
+
+    async function toggleAmbientMusic() {
+      const playIcon = document.getElementById('playIcon');
+      const pauseIcon = document.getElementById('pauseIcon');
+
+      try {
+        await Tone.start();
+        if (!synth) {
+          synth = new Tone.PolySynth(Tone.Synth, {
+            oscillator: { type: 'sine' },
+            envelope: { attack: 0.08, decay: 1.4, sustain: 0.2, release: 2.5 }
+          }).toDestination();
+          synth.volume.value = -14;
+
+          const notes = ['F4', 'A4', 'C5', 'F5', 'E5', 'C5', 'A4', 'G4', 'Bb4', 'D5', 'F5', 'E5', 'C5', 'G4'];
+          let idx = 0;
+          musicLoop = new Tone.Loop((time) => {
+            synth.triggerAttackRelease(notes[idx % notes.length], '4n', time);
+            idx++;
+          }, '2n');
+        }
+
+        if (!isPlaying) {
+          Tone.Transport.start();
+          musicLoop.start(0);
+          isPlaying = true;
+          playIcon.classList.add('hidden');
+          pauseIcon.classList.remove('hidden');
+        } else {
+          musicLoop.stop();
+          Tone.Transport.pause();
+          isPlaying = false;
+          pauseIcon.classList.add('hidden');
+          playIcon.classList.remove('hidden');
+        }
+      } catch (err) {
+        console.error('Audio playback error:', err);
+      }
+    }
+
+    // 3. RSVP Form Submission Handler
+    function handleRsvpSubmit(event) {
+      event.preventDefault();
+      const name = document.getElementById('guestName').value.trim();
+      const guests = document.getElementById('guestCount').value;
+      const attending = document.querySelector('input[name="attendance"]:checked').value;
+
+      const box = document.getElementById('rsvpSuccessBox');
+      const text = document.getElementById('rsvpSuccessText');
+
+      if (attending === 'yes') {
+        text.textContent = `We have reserved ${guests} seat(s) for ${name}. We cannot wait to celebrate with you in Ibiza!`;
+      } else {
+        text.textContent = `Thank you for letting us know, ${name}. You will be warmly missed on our special day.`;
+      }
+
+      box.classList.remove('hidden');
+      document.getElementById('rsvpForm').reset();
+    }
+
+    // 4. Location Modal Controls
+    function openLocationModal() {
+      const modal = document.getElementById('locationModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+    function closeLocationModal() {
+      const modal = document.getElementById('locationModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    // 5. Language Switcher (EN / ES)
+    const translations = {
+      EN: {
+        flag: '🇬🇧',
+        gettingMarried: "WE'RE GETTING<br/>MARRIED",
+        month: 'JULY',
+        inviteTitle: 'With love, we invite you',
+        inviteBody: '<p>to be a part of our special day</p><p>as we begin a new chapter together.</p><p>Your presence will make our celebration</p><p>truly meaningful.</p>',
+        countdownTitle: 'The countdown has begun',
+        days: 'DAYS',
+        hours: 'HOURS',
+        minutes: 'MINUTES',
+        seconds: 'SECONDS',
+        scheduleTitle: 'The Schedule',
+        ceremony: 'Wedding<br/>Ceremony',
+        reception: 'Reception',
+        locationsTitle: 'Locations',
+        locationLabel: 'LOCATION',
+        viewLocation: 'VIEW LOCATION',
+        rsvpDeadline: 'Kindly reply by June 1, 2027',
+        yourName: 'Your Name',
+        numGuests: 'Number of guests',
+        attendYes: "Yes, I'll be there",
+        attendNo: "Sorry, I can't make it",
+        confirmBtn: 'CONFIRM ATTENDANCE',
+        withLove: 'With love,'
+      },
+      ES: {
+        flag: '🇪🇸',
+        gettingMarried: 'NOS<br/>CASAMOS',
+        month: 'JULIO',
+        inviteTitle: 'Con amor, te invitamos',
+        inviteBody: '<p>a ser parte de nuestro día especial</p><p>mientras comenzamos un nuevo capítulo juntos.</p><p>Tu presencia hará que nuestra celebración</p><p>sea verdaderamente inolvidable.</p>',
+        countdownTitle: 'La cuenta atrás ha comenzado',
+        days: 'DÍAS',
+        hours: 'HORAS',
+        minutes: 'MINUTOS',
+        seconds: 'SEGUNDOS',
+        scheduleTitle: 'El Programa',
+        ceremony: 'Ceremonia<br/>Nupcial',
+        reception: 'Recepción',
+        locationsTitle: 'Ubicación',
+        locationLabel: 'LUGAR',
+        viewLocation: 'VER UBICACIÓN',
+        rsvpDeadline: 'Por favor confirma antes del 1 de Junio, 2027',
+        yourName: 'Tu Nombre',
+        numGuests: 'Número de invitados',
+        attendYes: 'Sí, asistiré',
+        attendNo: 'No podré asistir',
+        confirmBtn: 'CONFIRMAR ASISTENCIA',
+        withLove: 'Con amor,'
+      }
+    };
+
+    let currentLang = 'EN';
+    function cycleLanguage() {
+      currentLang = currentLang === 'EN' ? 'ES' : 'EN';
+      const dict = translations[currentLang];
+      document.getElementById('langFlag').textContent = dict.flag;
+      document.getElementById('langCode').textContent = currentLang;
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) el.innerHTML = dict[key];
+      });
+    }
+  </script>
+</body>
+</html>
